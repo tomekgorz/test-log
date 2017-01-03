@@ -29,8 +29,15 @@
                                      </div>
                                  </div>
                              </form>#}
-
+                            {% if form is not null %}
                             {{ form(form, {'attr': {'novalidate': 'novalidate'} }) }}
+                            {% else %}
+                                
+                                <div class="panel panel-success">
+                                    <div class="panel-heading">Już się zarejestrowałeś na szkolenie</div>
+                                    <div class="panel-body">Twoje zgłoszenie rejestracyjne jest przetwarzane.</div>
+                                </div>
+                            {%endif%}
 {#                    {{ form_start(form) }}
                         {{ form_row(form.country) }}
                         {{ form_row(form.email) }}

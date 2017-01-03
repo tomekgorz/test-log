@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Tgorz\TrainingBundle\Helper\Journal\Journal;
 use Tgorz\TrainingBundle\Helper\DataProvider;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 use Tgorz\TrainingBundle\Form\Type\RegisterType;
 use Tgorz\TrainingBundle\Entity\Register;
@@ -93,28 +94,51 @@ class BlogController extends Controller {
 
         $Register = new Register();
         
-        $form = $this->createForm(RegisterType::class, $Register)
+//        $form = $this->createForm(RegisterType::class, $Register)
                 
-                ->getForm();
+//                ->getForm();
+        $Session = new Session;
+        
+        if($Session->has('registered')){
+        
+            $form = $this->createForm(RegisterType::class, $Register);
+
+            $form->handleRequest($Requet);
 
 
-        $form->handleRequest($Requet);
 
-        if ($form->isValid()) {
+            if ($Requet->isMethod('POST')) {
+                if ($form->isValid()) {
 
-            $savePath = $this->get('kernel')->getRootDir() . '/../web/uploads/';
-            $Register->save($savePath);
+                    $savePath = $this->get('kernel')->getRootDir() . '/../web/uploads/';
+                    $Register->save($savePath);
+                    $smgBody = $this->render('TgorzTrainingBundle:Email:base.html.twig', array('name' => $Register->getName()));
+                    $message = \Swift_Message::newInstance()
+                            ->setSubject('Potwierdzenie rejestracji')
+                            ->setFrom(array('tgorz89@gmail.com' => 'Tomek Gorz'))
+                            ->setTo(array($Register->getEmail() => $Register->getName()))
+                            ->setBody($smgBody, 'text/html');
 
+                    $this->get('mailer')->send($message);
 
-            $formData = 'Zapisano dane formularza';
+                    $Session->getFlashBag()->add('success', 'Twoje zgłoszenie zostało zapisane');
+                    $Session->set('registered', true);
+
+                    return $this->redirect($this->generateUrl("tgorz_blog_rejestracja"));
+//            $formData = 'Zapisano dane formularza';
+                } else {
+                    $Session->getFlashBag()->add('danger', 'Popraw błędy formularza');
+                }
+            }
         }
 
         return array(
-            'form' => $form->createView(),
+            'form' => isset($form) ? $form->createView() : NULL,
             
-            'formData' => isset($formData) ? $formData : NULL,
+//            'formData' => isset($formData) ? $formData : NULL,
         );
     }
+    
 
     /**
      * @Template("TgorzTrainingBundle:Blog/Widgets:followingWidget.html.twig")

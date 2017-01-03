@@ -1,0 +1,23 @@
+Array
+(
+    [name] => Tomasz Gorz
+    [email] => tgorz89@gmail.com
+    [sex] => m
+    [birthdate] => DateTime Object
+        (
+            [date] => 1903-02-03 00:00:00
+            [timezone_type] => 3
+            [timezone] => Europe/Paris
+        )
+
+    [country] => AL
+    [course] => at
+    [invest] => Array
+        (
+            [0] => a
+            [1] => o
+            [2] => f
+        )
+
+    [comments] => 
+)
