@@ -1,0 +1,41 @@
+tgorz_training_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: TgorzTrainingBundle:Default:index }
+tgorz_training_registerUser:
+    path: /register-user/{name}/{age}-{role}
+    defaults:
+        _controller: TgorzTrainingBundle:Default:registerUser
+        role: user
+    requirements:
+        age: \d+
+        role: user|admin
+    methods: [GET]
+tgorz_training_simple1:
+    path: /simple
+    defaults:
+        _controller: TgorzTrainingBundle:Default:simple1
+tgorz_training_simple2:
+    path: /simple
+    defaults:
+        _controller: TgorzTrainingBundle:Default:simple2
+
+#tgorz_training_annotations:
+#    resource: "@TgorzTrainingBundle/Controller/DefaultController.php"
+#    type: annotation
+
+tgorz_training_annotations:
+    resource: "@TgorzTrainingBundle/Controller/"
+    type: annotation
+#    prefix: tgorz
+
+
+#51tgorz_training_aboutPage:
+#    path: /about
+#    defaults:
+#        _controller: TgorzTrainingBundle:Pages:about
+
+tgorz_blog_oMnie:
+    path: /blog/o-mnie
+    defaults:
+        _controller: FrameworkBundle:Template:template
+        template: TgorzTrainingBundle:Blog:about.html.twig

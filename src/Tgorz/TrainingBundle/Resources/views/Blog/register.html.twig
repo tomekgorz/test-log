@@ -1,0 +1,43 @@
+{% extends "TgorzTrainingBundle:Blog:sidebarLayout.html.twig" %}
+
+
+                    {% form_theme form 'TgorzTrainingBundle:Form:form_theme.html.twig' %}
+
+                    {% block pageTitle %} Rejestracja | {{ parent() }}{% endblock %}
+                    {% block  contentContainer %}
+                        <article class="col-md-8 journal">
+                            <h1>Rejestracja</h1>
+{#                            <pre>{{ dump(formData) }}</pre>#}
+                            {#<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
+                    
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                                        <span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                                    </div>
+                                </div>
+                            </form>
+                            #}
+
+                            {# <form class="form-horizontal" action="" method="post" nctype="multipart/form-data">
+                                 <div class="form-group">
+                                     {{ form_label(form.name, null, {'label_attr': {'class': 'col-sm-3 control-label'} }) }}
+                                     <div class="col-sm-9">
+                                         {{ form_widget(form.name, {'attr': {'class': 'form-control'} }) }}
+                                         {{ form_errors(form.name) }}
+                                     </div>
+                                 </div>
+                             </form>#}
+
+                            {{ form(form, {'attr': {'novalidate': 'novalidate'} }) }}
+{#                    {{ form_start(form) }}
+                        {{ form_row(form.country) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.invest) }}
+                        {{ form_row(form.comments) }}
+                    {{ form_end(form) }}#}
+
+                        </article>
+
+                    {% endblock %}

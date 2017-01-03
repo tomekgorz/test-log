@@ -1,0 +1,27 @@
+{% extends "TgorzTrainingBundle::base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('bundles/tgorztraining/css/sidebar.css') }}" rel="stylesheet">
+{% endblock %}
+{% block  pageContainer %}
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row extra-padding">
+
+            {% block contentContainer %}
+
+            {%endblock%}
+
+            <div class="col-md-3 pull-right sidebar">
+                {% include 'TgorzTrainingBundle:Blog/Widgets:gpwWidget.html.twig' %}
+
+                {#                {% include 'TgorzTrainingBundle:Blog/Widgets:followingWidget.html.twig' %}#}
+                {{ render(controller('TgorzTrainingBundle:Blog:followingWidget')) }}
+
+                {#                {% include 'TgorzTrainingBundle:Blog/Widgets:walletWidget.html.twig' %}#}
+                {{ render(controller('TgorzTrainingBundle:Blog:followingWidget')) }}
+            </div>
+        </div>
+
+    </div> <!-- /container -->
+{% endblock %}

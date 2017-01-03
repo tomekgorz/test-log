@@ -1,0 +1,18 @@
+{% extends "TgorzTrainingBundle:Blog:sidebarLayout.html.twig" %}
+{% block pageTitle %} Księga gości | {{ parent() }}{% endblock %}
+{% block  contentContainer %}
+    <article class="col-md-8 journal">
+        <h1>Inwestorzy o blogu</h1>
+{#        {% autoescape false %}#}
+        <div class="guest-book">
+            {% for entry in comments %}
+                <secton>
+                    <h4>{{ entry['name']|raw }}</h4>
+                    <p>{{ entry['comment'] }}</p>
+                </section>
+            {% endfor %}
+        </div>
+{#        {% endautoescape %}#}
+    </article>
+
+{% endblock %}
