@@ -8,5 +8,5 @@ parameters:
     mailer_transport: gmail
     mailer_host: ~
     mailer_user: tgorz89@gmail.com
-    mailer_password: 89070304496
+    mailer_password: null
     secret: a31ba471ff3a3839156ac27a08375ee8665ac55b

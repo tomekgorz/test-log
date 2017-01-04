@@ -131,7 +131,7 @@ class BlogController extends Controller {
                 }
             }
         }
-
+//        $Session->set('registered', false);
         return array(
             'form' => isset($form) ? $form->createView() : NULL,
             
