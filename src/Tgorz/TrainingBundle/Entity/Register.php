@@ -1,14 +1,29 @@
 <?php
 
-
 namespace Tgorz\TrainingBundle\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="registrations")
+ */
 class Register {
 
     /**
+     * @var int
      *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     *
+     * @ORM\Column(type="string", length=255)
+     * 
      * @Assert\NotBlank
      * 
      * @Assert\Regex(
@@ -17,40 +32,53 @@ class Register {
      * )
      */
     private $name;
+
     /**
      *
+     *  @ORM\Column(type="string", length=255)
+     * 
      * @Assert\NotBlank
      * 
      * @Assert\Email
      */
     private $email;
     
-    
-    private $sex;
     /**
      *
+     *  @ORM\Column(type="string", length=1, nullable=true)
+     */
+    private $sex;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     * 
      * @Assert\Date
      * 
      * 
      */
-    
     private $birthdate;
+
     /**
+     *  @ORM\Column(type="string", length=2)
      *
      * @Assert\NotBlank
      * 
      * 
      */
-    
     private $country;
+
     /**
      *
+     *  @ORM\Column(type="string", length=255)
+     * 
      * @Assert\NotBlank
      * 
      * 
      */
     private $course;
+
     /**
+     *  @ORM\Column(type="array")
      *
      * @Assert\NotBlank
      * 
@@ -60,9 +88,13 @@ class Register {
      */
     private $invest;
     
-    
+    /**
+     *
+     *  @ORM\Column(type="text", nullable=true) 
+     * 
+     */
     private $comments;
-    
+
     /**
      *
      * @Assert\NotBlank
@@ -74,7 +106,7 @@ class Register {
      * )
      */
     private $paymentFile;
-    
+
     public function getName() {
         return $this->name;
     }
@@ -156,25 +188,35 @@ class Register {
         return $this;
     }
 
-    public function save($savePath){
+    public function save($savePath) {
 
-            $paramsNames = array('name','email','sex','birthdate','country','course','invest','comments');
-            $formData = array();
-            
-            foreach($paramsNames as $name){
-                $formData[$name] = $this->{$name};
-            }
-            
-            $randVal = rand(1000, 99999);
-            $dataFileName = sprintf('data_%d.txt', $randVal);
+        $paramsNames = array('name', 'email', 'sex', 'birthdate', 'country', 'course', 'invest', 'comments');
+        $formData = array();
 
-            file_put_contents($savePath . $dataFileName, print_r($formData, TRUE));
+        foreach ($paramsNames as $name) {
+            $formData[$name] = $this->{$name};
+        }
 
-            $file = $this->getPaymentFile();
-            if (NULL !== $file) {
-                $newName = sprintf('file_%d.%s', $randVal, $file->guessExtension());
-                $file->move($savePath, $newName);
-            }
+        $randVal = rand(1000, 99999);
+        $dataFileName = sprintf('data_%d.txt', $randVal);
+
+        file_put_contents($savePath . $dataFileName, print_r($formData, TRUE));
+
+        $file = $this->getPaymentFile();
+        if (NULL !== $file) {
+            $newName = sprintf('file_%d.%s', $randVal, $file->guessExtension());
+            $file->move($savePath, $newName);
+        }
     }
-    
+
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
 }

@@ -112,6 +112,11 @@ class BlogController extends Controller {
 
                     $savePath = $this->get('kernel')->getRootDir() . '/../web/uploads/';
                     $Register->save($savePath);
+                    
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($Register);
+                    $em->flush();
+                    
                     $smgBody = $this->render('TgorzTrainingBundle:Email:base.html.twig', array('name' => $Register->getName()));
                     $message = \Swift_Message::newInstance()
                             ->setSubject('Potwierdzenie rejestracji')

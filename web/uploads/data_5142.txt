@@ -1,0 +1,22 @@
+Array
+(
+    [name] => Annka Skakanka
+    [email] => anna@skakanka.com
+    [sex] => f
+    [birthdate] => DateTime Object
+        (
+            [date] => 1970-02-14 00:00:00
+            [timezone_type] => 3
+            [timezone] => Europe/Paris
+        )
+
+    [country] => EE
+    [course] => basic
+    [invest] => Array
+        (
+            [0] => f
+            [1] => etf
+        )
+
+    [comments] => asfasga
+)

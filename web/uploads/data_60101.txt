@@ -1,0 +1,23 @@
+Array
+(
+    [name] => Franek Kimono
+    [email] => franek@kimono.com
+    [sex] => m
+    [birthdate] => DateTime Object
+        (
+            [date] => 1982-08-06 00:00:00
+            [timezone_type] => 3
+            [timezone] => Europe/Paris
+        )
+
+    [country] => AM
+    [course] => af
+    [invest] => Array
+        (
+            [0] => a
+            [1] => o
+            [2] => etf
+        )
+
+    [comments] => agasgasa
+)

@@ -70,4 +70,13 @@ class DefaultController extends Controller
         return new Response('<html><head><title>Debugging</title></head><body><h1>debugging</h1></body></html>');
     }
     
+
+//    /**
+//     * @Route("/admin")
+//     */
+//    public function adminAction()
+//    {
+//        return new Response('<html><body>Admin page!</body></html>');
+//    }
+    
 }

@@ -1,0 +1,13 @@
+{% extends "TgorzTrainingBundle:Blog:sidebarLayout.html.twig" %}
+{% form_theme form 'TgorzTrainingBundle:Form:form_theme.html.twig' %}
+{% block pageTitle %}
+    Rejestracja #{{ register.id }} | {{ parent() }}
+{% endblock %}
+
+{% block contentContainer %}
+    <article class="col-md-8">
+        <h1>Rejestracja #{{ register.id }}</h1>
+
+        {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    </article>
+{% endblock %}

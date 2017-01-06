@@ -5,16 +5,28 @@ security:
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
-
+            memory:
+                users:
+                    tgorz:
+                        password: tgorzpass
+                        roles: 'ROLE_USER'
+                    admin:
+                        password: kitten
+                        roles: 'ROLE_ADMIN'
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext                    
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
+        default:
+            anonymous: ~
+            http_basic: ~
         main:
             anonymous: ~
+    access_control:
+        - { path: ^blog/admin, roles: ROLE_ADMIN }
             # activate different ways to authenticate
 
             # http_basic: ~
