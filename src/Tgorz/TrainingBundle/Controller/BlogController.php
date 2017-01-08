@@ -126,13 +126,15 @@ class BlogController extends Controller {
 
                     $this->get('mailer')->send($message);
 
-                    $Session->getFlashBag()->add('success', 'Twoje zgłoszenie zostało zapisane');
+//                    $Session->getFlashBag()->add('success', 'Twoje zgłoszenie zostało zapisane');
+                    $this->get('tgorz_notification')->addSuccess('Twoje zgłoszenie zostało zapisane');
                     $Session->set('registered', true);
 
                     return $this->redirect($this->generateUrl("tgorz_blog_rejestracja"));
 //            $formData = 'Zapisano dane formularza';
                 } else {
-                    $Session->getFlashBag()->add('danger', 'Popraw błędy formularza');
+                    $this->get('tgorz_notification')->addError('Popraw błędy formularza');
+//                    $Session->getFlashBag()->add('danger', 'Popraw błędy formularza');
                 }
             }
         }

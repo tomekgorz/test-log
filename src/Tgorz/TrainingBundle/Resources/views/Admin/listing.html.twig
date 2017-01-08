@@ -25,8 +25,13 @@
                         <td>{{ entry.country }}</td>
                         <td>{{ entry.course }}</td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="{{ path('tgorz_blog_admin_details', {'id': entry.id}) }}">Zobacz szczegóły</a>
-                            <a class="btn btn-sm btn-danger" href="{{ path('tgorz_blog_admin_delete', {'id': entry.id}) }}">Usuń rekord</a>
+{#                            {% if btns != false %}#}
+                            {% if is_granted("ROLE_ADMIN") %}
+                                <a class="btn btn-sm btn-info" href="{{ path('tgorz_blog_admin_details', {'id': entry.id}) }}">Zobacz szczegóły</a>
+                                <a class="btn btn-sm btn-danger" href="{{ path('tgorz_blog_admin_delete', {'id': entry.id}) }}">Usuń rekord</a>
+                            {% else %}
+                                Nie masz uprawnień do żadnej akcji
+                            {% endif %}
                         </td>
                     </tr>
                 {% else %}
@@ -37,6 +42,9 @@
                 {% endfor %}
             </tbody>
         </table>
-
+            
+            <hr/>
+            <h3>Zalogowano jako: {{ app.user.username }} </h3>
+            <h6> Posiadane role: {{ app.user.roles|join(', ') }} </h6>
     </article>
 {% endblock %}

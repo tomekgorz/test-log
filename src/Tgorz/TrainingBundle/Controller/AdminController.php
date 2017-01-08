@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Tgorz\TrainingBundle\Helper\Journal\Journal;
 use Tgorz\TrainingBundle\Helper\DataProvider;
-use Symfony\Component\HttpFoundation\Session\Session;
+//use Symfony\Component\HttpFoundation\Session\Session;
 
 use Tgorz\TrainingBundle\Form\Type\RegisterType;
 use Tgorz\TrainingBundle\Entity\Register;
@@ -32,8 +32,19 @@ class AdminController extends Controller {
 //       $Rows = $Repo->findBy(array(
 //           'sex' => 'm',
 //       ));
+//       $User = $this->get('security.token_storage');
+       
+//       var_dump($User);
+       if($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')){
+           $btns = TRUE;
+       }else{
+           $btns = FALSE;
+       }
+       
         return array(
-            'rows' => $Rows
+            'rows' => $Rows,
+            'btns' => $btns,
+//            'user' => $User
         );
     }
     
@@ -77,7 +88,7 @@ class AdminController extends Controller {
         $form = $this->createForm(RegisterType::class, $Register);
         
         if($Request->isMethod("POST")){
-            $Session = new Session;
+//            $Session = new Session;
             $form->handleRequest($Request);
             if($form->isValid()){
                 
@@ -85,14 +96,16 @@ class AdminController extends Controller {
                 $em->persist($Register);
                 $em->flush();
                 
-                $Session->getFlashBag()->add('success', 'Zaktualizowano rekord');
+//                $Session->getFlashBag()->add('success', 'Zaktualizowano rekord');
+                $this->get('tgorz_notification')->addSuccess('Zaktualizowano rekord');
                 
                 return $this->redirect($this->generateUrl('tgorz_blog_admin_details', array(
                     'id' => $Register->getId()
                 )));
                 
             }else{
-                $Session->getFlashBag()->add('danger', 'Popraw błędy formularza');
+//                $Session->getFlashBag()->add('danger', 'Popraw błędy formularza');
+                $this->get('tgorz_notification')->addError('Popraw błędy formularza');
             }
         }
         
@@ -122,8 +135,9 @@ class AdminController extends Controller {
         $em->remove($Register);
         $em->flush();
         
-        $Session = new Session;
-        $Session->getFlashBag()->add('success', 'Poprawnie usunięto rekord z bazy danych');
+//        $Session = new Session;
+//        $Session->getFlashBag()->add('success', 'Poprawnie usunięto rekord z bazy danych');
+        $this->get('tgorz_notification')->addSuccess('Poprawnie usunięto rekord z bazy danych');
         return $this->redirect($this->generateUrl('tgorz_blog_admin_listing'));
     }
 

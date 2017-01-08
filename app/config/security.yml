@@ -1,32 +1,48 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
-
+    role_hierarchy:
+        ROLE_MODERATOR:     ROLE_USER
+        ROLE_ADMIN:         [ROLE_USER, ROLE_MODERATOR]
+        ROLE_SUPER_ADMIN: [ ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH ]
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext         
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
             memory:
                 users:
-                    tgorz:
-                        password: tgorzpass
+                    user:
+                        password: userpass
                         roles: 'ROLE_USER'
+                    mod:
+                        password: modpass
+                        roles: 'ROLE_MODERATOR'
                     admin:
                         password: kitten
                         roles: 'ROLE_ADMIN'
-    encoders:
-        Symfony\Component\Security\Core\User\User: plaintext                    
+                    tgorz:
+                        password: tgorzpass
+                        roles: 'ROLE_SUPER_ADMIN'
+                       
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+        blog_admin:
+            pattern: ^/blog/admin/
+            anonymous: false
+            http_basic:
+                realm: "Blog Admin Panel"
         default:
             anonymous: ~
             http_basic: ~
         main:
             anonymous: ~
     access_control:
-        - { path: ^blog/admin, roles: ROLE_ADMIN }
+        - { path: ^blog/admin/update|details, roles: ROLE_ADMIN }
+        - { path: ^blog/admin, roles: ROLE_MODERATOR }
             # activate different ways to authenticate
 
             # http_basic: ~
