@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-use Tgorz\TrainingBundle\Entity\User;
+//use Tgorz\TrainingBundle\Entity\User;
 
 class LoginRegistrationType extends AbstractType {
     
@@ -22,10 +22,10 @@ class LoginRegistrationType extends AbstractType {
             'label' => 'Login'
         ))
             ->add('password', PasswordType::class, array(
-                'label' => 'Hasło'
+                'label' => 'Password'
             ))
             ->add('login', SubmitType::class, array(
-                'label' => 'Zaloguj'
+                'label' => 'Log-in'
             ));
     }
     

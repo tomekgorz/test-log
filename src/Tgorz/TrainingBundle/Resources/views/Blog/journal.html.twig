@@ -4,7 +4,7 @@
     <article class="col-md-8 journal">
         <h1>Domowy dzienniczek inwestora</h1>
         <p>Na początku swojej przygoty z inwestowaniem postanowiłem, że każdą inwestycję będę zapisywał. W ten sposób powstał poniższy dziennik, który prezentuje moją aktywność na giełdzie. Przez ostatnie pare miesięcy wiele się działo. Na zmianę raz zyskiwałem, raz traciłem.</p>
-        <h4>Wszystkich inwestycji: {{ history|length }}</h4>
+        <h4>{% trans %}Total investment{% endtrans %}: {{ history|length }}</h4>
 {#        <pre> {{ dump(history) }} </pre>#}
         <table class="table table-bordered table-striped table-hover">
             <thead>

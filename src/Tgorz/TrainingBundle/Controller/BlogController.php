@@ -26,6 +26,18 @@ class BlogController extends Controller {
      * @Template
      */
     public function indexAction() {
+        
+//        $Test = 'Hellow World';
+//        
+//        dump($Test);
+//        
+////        die();
+//        
+//        $translator = $this->get('translator')->trans($Test);
+//        dump($this->get('translator')->trans($Test));
+//        
+//        die();
+        
         return array();
     }
 

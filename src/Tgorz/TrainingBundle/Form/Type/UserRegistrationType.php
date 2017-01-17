@@ -34,8 +34,8 @@ class UserRegistrationType extends AbstractType{
             ) )
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options' => array('label' => 'Hasło'),
-                'second_options' => array('label' => 'Powtórz hasło'),
+                'first_options' => array('label' => 'Password'),
+                'second_options' => array('label' => 'Repeat password'),
                 
             ))
             ->add('termsAccepted', CheckboxType::class, array(
@@ -43,14 +43,14 @@ class UserRegistrationType extends AbstractType{
                 'constraints' => new IsTrue()
             ))
             ->add('save', SubmitType::class, array(
-                'label' => 'Utwórz konto'
+                'label' => 'Registration'
             ));
     }
     
-    public function configureOptions(OptionsResolver $resolver) {
-        $resolver->setDefault(array(
-           'data_class' => User::class,
-        ));
-    }
+//    public function configureOptions(OptionsResolver $resolver) {
+//        $resolver->setDefault(array(
+//           'data_class' => User::class,
+//        ));
+//    }
     
 }
