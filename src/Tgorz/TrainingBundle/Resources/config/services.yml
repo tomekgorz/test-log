@@ -1,9 +1,14 @@
 parameters:
     tgorz_training.service.notification.class: Tgorz\TrainingBundle\Service\NotificationService
+    tgorz_training.event_listentr.exception_listener.class: Tgorz\TrainingBundle\EventListener\ExceptionListener;
 services:
     tgorz_notification:
         class: %tgorz_training.service.notification.class%
         arguments: ["@session"]
+    tgorz_exeption_listener:
+        class: Tgorz\TrainingBundle\EventListener\ExceptionListener
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
 #    tgorz_training.example:
 #        class: Tgorz\TrainingBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]

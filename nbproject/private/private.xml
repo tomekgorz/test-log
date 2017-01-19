@@ -2,6 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Service/NotificationService.php</file>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/EventListener/ExceptionListener.php</file>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Resources/config/services.yml</file>
+        </group>
     </open-files>
 </project-private>
