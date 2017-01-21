@@ -1,6 +1,6 @@
 parameters:
     tgorz_training.service.notification.class: Tgorz\TrainingBundle\Service\NotificationService
-    tgorz_training.event_listentr.exception_listener.class: Tgorz\TrainingBundle\EventListener\ExceptionListener;
+#    tgorz_training.event_listentr.exception_listener.class: Tgorz\TrainingBundle\EventListener\ExceptionListener;
 services:
     tgorz_notification:
         class: %tgorz_training.service.notification.class%

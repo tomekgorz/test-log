@@ -52,7 +52,9 @@
                             
                             <li {{ app.request.get('_route') == item['path'] ? 'class="active"' : ''}} ><a href="{{ path(item['path']) }}">{{ item['name'] }}</a></li>
                         {% endfor %}
-                        
+                        {% if  is_granted("ROLE_MODERATOR") %}
+                        <li><a href="{{path('tgorz_blog_admin_listing') }}">Admin panel</a></li>
+                        {% endif %}
                         
 						{#<li class="active"><a href="glowna.html">Home</a></li>
 						<li><a href="dziennik.html">Dziennik</a></li>

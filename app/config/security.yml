@@ -42,6 +42,9 @@ security:
                 default_target_path: tgorz_blog_glowna
                 username_parameter: login_registration[username]
                 password_parameter: login_registration[password]
+            logout:
+                path: _logout
+                target: tgorz_blog_glowna
             
         blog_admin:
             pattern: ^/blog/admin/

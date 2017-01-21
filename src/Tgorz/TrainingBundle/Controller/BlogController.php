@@ -13,10 +13,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Tgorz\TrainingBundle\Form\Type\RegisterType;
 use Tgorz\TrainingBundle\Entity\Register;
 
-/**
- * @Route("/blog")
- * 
- */
+
 class BlogController extends Controller {
 
     /**
