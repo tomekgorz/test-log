@@ -14,7 +14,7 @@ use Tgorz\TrainingBundle\Form\Type\RegisterType;
 use Tgorz\TrainingBundle\Entity\Register;
 
 /**
- * @Route("/blog/admin")
+ * @Route("/admin")
  * 
  */
 class AdminController extends Controller {
@@ -139,6 +139,13 @@ class AdminController extends Controller {
 //        $Session->getFlashBag()->add('success', 'Poprawnie usunięto rekord z bazy danych');
         $this->get('tgorz_notification')->addSuccess('Poprawnie usunięto rekord z bazy danych');
         return $this->redirect($this->generateUrl('tgorz_blog_admin_listing'));
+    }
+    /**
+     * 
+     * Route("users")
+     */
+    public function userListAction(){
+        
     }
 
     

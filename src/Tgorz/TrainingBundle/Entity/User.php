@@ -68,6 +68,13 @@ class User implements AdvancedUserInterface, \Serializable {
      */
     private $isActive;
     
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $role;
+    
     public function __construct() {
         $this->isActive = true;
     }
@@ -195,9 +202,15 @@ class User implements AdvancedUserInterface, \Serializable {
     public function eraseCredentials() {
         return null;
     }
+    
+    public function setRole($role){
+        $this->role = $role;
+        
+        return $this;
+    }
 
     public function getRoles() {
-        return array('ROLE_ADMIN');
+        return array($this->role);
     }
 
     public function getSalt() {

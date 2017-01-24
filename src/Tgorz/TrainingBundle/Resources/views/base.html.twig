@@ -55,6 +55,11 @@
                         {% if  is_granted("ROLE_MODERATOR") %}
                         <li><a href="{{path('tgorz_blog_admin_listing') }}">Admin panel</a></li>
                         {% endif %}
+                        {% if is_granted("ROLE_USER") %}
+                        <li><a href="{{path('_logout') }}">Log-out</a></li>
+                        {% else %}
+                        <li><a href="{{path('security_login') }}">Log-in</a></li>
+                        {% endif %}
                         
 						{#<li class="active"><a href="glowna.html">Home</a></li>
 						<li><a href="dziennik.html">Dziennik</a></li>

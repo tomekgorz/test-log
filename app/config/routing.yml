@@ -1,8 +1,7 @@
 tgorz_training:
     resource: "@TgorzTrainingBundle/Resources/config/routing.yml"
     prefix:   /
-_logout:
-     path: /logout
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

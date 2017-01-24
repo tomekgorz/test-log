@@ -39,3 +39,5 @@ tgorz_blog_oMnie:
     defaults:
         _controller: FrameworkBundle:Template:template
         template: TgorzTrainingBundle:Blog:about.html.twig
+_logout:
+     path: /logout

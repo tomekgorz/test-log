@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Service/NotificationService.php</file>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Controller/SecurityController.php</file>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Resources/views/base.html.twig</file>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Entity/Register.php</file>
             <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Controller/AdminController.php</file>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Entity/User.php</file>
+            <file>file:/E:/wamp/www/test-blog/app/config/security.yml</file>
+            <file>file:/E:/wamp/www/test-blog/src/Tgorz/TrainingBundle/Resources/config/routing.yml</file>
         </group>
     </open-files>
 </project-private>
