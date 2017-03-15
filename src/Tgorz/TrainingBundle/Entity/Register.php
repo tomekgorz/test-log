@@ -97,7 +97,7 @@ class Register {
 
     /**
      *
-     * @Assert\NotBlank
+     * 
      * 
      * @Assert\File(
      *          maxSize ="1M",

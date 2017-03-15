@@ -137,7 +137,7 @@ class BlogController extends Controller {
 
 //                    $Session->getFlashBag()->add('success', 'Twoje zgłoszenie zostało zapisane');
                     $this->get('tgorz_notification')->addSuccess('Twoje zgłoszenie zostało zapisane');
-                    $Session->set('registered', true);
+//                    $Session->set('registered', true);
 
                     return $this->redirect($this->generateUrl("tgorz_blog_rejestracja"));
 //            $formData = 'Zapisano dane formularza';

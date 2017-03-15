@@ -59,6 +59,7 @@ security:
     access_control:
         - { path: ^blog/admin/update|details, roles: ROLE_ADMIN }
         - { path: ^blog/admin, roles: ROLE_MODERATOR }
+        - { path: ^add-role/*, roles: ROLE_SUPER_ADMIN }
             # activate different ways to authenticate
 
             # http_basic: ~

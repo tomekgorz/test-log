@@ -11,6 +11,7 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
  * User
  * 
  * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Tgorz\TrainingBundle\Repository\UserRepository")
  * @ORM\Table(name="users")
  * 
  * 
@@ -211,6 +212,9 @@ class User implements AdvancedUserInterface, \Serializable {
 
     public function getRoles() {
         return array($this->role);
+    }
+    public function getRole() {
+        return $this->role;
     }
 
     public function getSalt() {

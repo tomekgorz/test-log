@@ -140,13 +140,7 @@ class AdminController extends Controller {
         $this->get('tgorz_notification')->addSuccess('Poprawnie usunięto rekord z bazy danych');
         return $this->redirect($this->generateUrl('tgorz_blog_admin_listing'));
     }
-    /**
-     * 
-     * Route("users")
-     */
-    public function userListAction(){
-        
-    }
+    
 
     
 
