@@ -8,6 +8,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Tgorz\TrainingBundle\Helper\Journal\Journal;
 use Tgorz\TrainingBundle\Helper\DataProvider;
+use Tgorz\TrainingBundle\Event\TestEvent;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 //use Symfony\Component\HttpFoundation\Session\Session;
 
 use Tgorz\TrainingBundle\Form\Type\RegisterType;
@@ -29,22 +31,20 @@ class AdminController extends Controller {
         
        $Repo = $this->getDoctrine()->getRepository('TgorzTrainingBundle:Register');
        $Rows = $Repo->findAll();
-//       $Rows = $Repo->findBy(array(
-//           'sex' => 'm',
-//       ));
-//       $User = $this->get('security.token_storage');
-       
-//       var_dump($User);
+
        if($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')){
            $btns = TRUE;
        }else{
            $btns = FALSE;
        }
-       
+       $test = '';
+       $event = new TestEvent($test);
+       $dispatcher = new EventDispatcher();
+       $dispatcher->dispatch(TestEvent::TEST, $event);
         return array(
             'rows' => $Rows,
             'btns' => $btns,
-//            'user' => $User
+            'test' => $test
         );
     }
     
