@@ -17,4 +17,8 @@ services:
         class: Tgorz\TrainingBundle\EventSubscriber\PostUpdateSubscriber
         tags:
             - { name: doctrine.event_subscriber }
+    tgorz_trainig.subscriber.test:
+        class: Tgorz\TrainingBundle\EventSubscriber\TestSubscriber
+        tags:
+            - { name: kernel.event_subscriber, connection: default }
 

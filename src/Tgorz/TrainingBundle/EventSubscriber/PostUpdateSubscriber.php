@@ -18,11 +18,11 @@ class PostUpdateSubscriber implements EventSubscriber {
     {
 //        return array();
         return array(
-            Events::preUpdate => 'onPreUpdate',
+            Events::preUpdate => 'preUpdate',
         );
     }
     
-    public function onPreUpdate(\Doctrine\Common\Persistence\Event\PreUpdateEventArgs $args) {
+    public function preUpdate(\Doctrine\Common\Persistence\Event\PreUpdateEventArgs $args) {
 //        $entity = $args->getObject;
         
         if ($args->getEntity() instanceof \Tgorz\TrainingBundle\Entity\Register) {

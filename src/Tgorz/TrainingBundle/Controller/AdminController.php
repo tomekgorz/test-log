@@ -37,7 +37,7 @@ class AdminController extends Controller {
        }else{
            $btns = FALSE;
        }
-       $test = '';
+       $test = 'ss';
        $event = new TestEvent($test);
        $dispatcher = new EventDispatcher();
        $dispatcher->dispatch(TestEvent::TEST, $event);

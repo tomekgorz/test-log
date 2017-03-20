@@ -8,7 +8,7 @@ use Symfony\Component\EventDispatcher\Event;
 
 class TestEvent extends Event{
     
-    const TEST = 'test';
+    const TEST = 'onTest';
     
     private $text;
 
@@ -19,5 +19,9 @@ class TestEvent extends Event{
     
     public function getText(){
         return $this->text;
+    }
+    
+    public function setText($text) {
+        $this->text = $text;
     }
 }
